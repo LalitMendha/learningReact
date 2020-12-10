@@ -28,9 +28,19 @@ export default function App() {
   function onChangeInput(event) {
     var userInput = event.target.value;
     var meaning = emojiDictionary[userInput];
+    if (meaning === undefined) {
+      meaning = "we dont have in our database";
+    }
     setMeaning(meaning);
-    // var inputMeaning = emojiDictionary[userInput];
-    // setMeaning(inputMeaning);
+
+    //   var inputMeaning = emojiDictionary[userInput];
+    //   setMeaning(inputMeaning);
+    //   if(userInput in emojiDictionary){
+    //     setMeaning(emojiDictionary[userInput]);
+    //   } else {
+    //     meaning = "we dont have in our database";
+    //     setMeaning(meaning);
+    // }
   }
 
   return (
@@ -42,11 +52,14 @@ export default function App() {
       <button onClick={clickListener}>Click me</button> {count}
       <br />
       <br />
-      <input onChange={inputChangeHandler}></input>
+      <input
+        placeholder="Enter your name"
+        onChange={inputChangeHandler}
+      ></input>
       <div>
         Welcome <span style={{ color: "blue" }}>{userInput} </span> !!
       </div>
-      <input onChange={onChangeInput}></input>
+      <input placeholder="Enter emoji" onChange={onChangeInput}></input>
       <div>this means {meaning}</div>
     </div>
   );
@@ -63,4 +76,7 @@ export default function App() {
 // called an imperative statements. but in react we use declarative
 //statement it means for eg: I want this here so now it is react
 //job to put it there.
-// VISER - render view, interact with view, update state in event handler, render it.
+// Viser - render view, interact with view, update state in event handler, render it.
+// read about key in object in javascript.
+// difference between == and ===
+// try to make leap year in react
